@@ -68,6 +68,9 @@ class SemanticChunking:
 
         distances = self._calculate_distances(sentences)
 
+        if not distances:
+            return [text]
+
         threshold = np.percentile(distances, self.breakpoint_percentile)
         split_points = [i for i, d in enumerate(distances) if d > threshold]
 
