@@ -1,0 +1,26 @@
+[project]
+name = "hr-assistant"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "albox7", email = "16341764+albox7@users.noreply.github.com"}
+]
+readme = "README.md"
+requires-python = ">=3.13,<4.0.0"
+dependencies = [
+    "chromadb (>=1.0.0,<2.0.0)",
+    "openai (>=1.59.9,<3.0.0)",
+    "chainlit (>=2.0.5,<3.0.0)",
+    "python-dotenv (>=1.0.0,<2.0.0)",
+    "langchain-openai (>=1.0.0,<2.0.0)",
+    "scikit-learn (>=1.0.0,<2.0.0)",
+    "numpy (>=2.0.0,<3.0.0)",
+    "markitdown[docx,pdf,pptx,xlsx] (>=0.1.5,<0.2.0)"
+]
+
+[tool.poetry]
+packages = [{include = "hr_assistant"}]
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
