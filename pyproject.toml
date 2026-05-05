@@ -6,7 +6,7 @@ authors = [
     {name = "albox7", email = "16341764+albox7@users.noreply.github.com"}
 ]
 readme = "README.md"
-requires-python = ">=3.13,<4.0.0"
+requires-python = ">=3.12,<4.0.0"
 dependencies = [
     "chromadb (>=1.0.0,<2.0.0)",
     "openai (>=1.59.9,<3.0.0)",

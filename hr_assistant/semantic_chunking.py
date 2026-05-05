@@ -6,7 +6,9 @@ from sklearn.metrics.pairwise import cosine_similarity
 
 class SemanticChunking:
     def __init__(self, api_key, breakpoint_percentile=95, buffer_size=1):
-        self.embeddings = OpenAIEmbeddings(openai_api_key=api_key)
+        # self.embeddings = OpenAIEmbeddings(openai_api_key=api_key)
+        self.embeddings = OpenAIEmbeddings(openai_api_key=api_key, model="text-embedding-3-small")
+
         self.breakpoint_percentile = breakpoint_percentile
         self.buffer_size = buffer_size
 
