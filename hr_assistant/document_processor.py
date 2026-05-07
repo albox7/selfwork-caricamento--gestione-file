@@ -48,18 +48,25 @@ class DocumentProcessor:
                 hash_md5.update(chunk)
         return hash_md5.hexdigest()
 
+   
     def get_document_metadata(self, file_path: str) -> Dict[str, Any]:
         extension = os.path.splitext(file_path)[1].lower()
         file_type = self.SUPPORTED_EXTENSIONS.get(extension, "unknown")
 
-        return {
+        metadata = {
             "hash": self.get_file_hash(file_path),
             "last_modified": os.path.getmtime(file_path),
             "source": os.path.basename(file_path),
             "file_type": file_type,
-            "mime_type": mimetypes.guess_type(file_path)[0],
+            "mime_type": mimetypes.guess_type(file_path)[0] or "application/octet-stream",
             "extension": extension,
         }
+        # ChromaDB accetta solo str/int/float/bool nei metadati: filtriamo per sicurezza
+        return {
+            k: v for k, v in metadata.items()
+            if isinstance(v, (str, int, float, bool))
+        }
+
 
     def _process_zip_file(self, file_path: str) -> List[Tuple[str, str]]:
         results = []

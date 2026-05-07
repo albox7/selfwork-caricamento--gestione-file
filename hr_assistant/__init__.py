@@ -133,6 +133,10 @@ async def handle_message(message: cl.Message):
         await cl.Message(content=result_message).send()
         await cl.Message(content=f"Caricati {len(files)} file").send()
 
+    # Se l'utente NON ha scritto una domanda -> return
+    if not user_question or not user_question.strip():
+        return
+
     # Interroga il sistema
     results = db.query(user_question)
 
